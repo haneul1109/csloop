@@ -34,6 +34,7 @@ namespace csloop
             int x = 1;
             while (x < 50)
             {
+                //화면을 지우고 커서를 이동합니다.
                 Console.Clear();
                 Console.SetCursorPosition(x, 5);
 
@@ -44,8 +45,58 @@ namespace csloop
                 else
                     Console.WriteLine("^_@");
 
+                //100밀리초 정지하고 X를 증가합니다.
                 Thread.Sleep(100);
                 x++;
             }
+
+            //switch 조건문과 무한 반복문
+            while (true)
+            {
+                ConsoleKeyInfo info = Console.ReadKey();
+                switch (info.Key)
+                {
+                    case ConsoleKey.UpArrow:
+                        Console.WriteLine("위로 이동");
+                        break;
+                    case ConsoleKey.RightArrow:
+                        Console.WriteLine("오른쪽으로 이동");
+                        break;
+                    case ConsoleKey.DownArrow:
+                        Console.WriteLine("아래로 이동");
+                        break;
+                    case ConsoleKey.LeftArrow:
+                        Console.WriteLine("왼쪽으로 이동");
+                        break;
+                    case ConsoleKey.X:
+                        break;
+                }
+
+                //개선된 switch 조건문(자주 애용되는 패턴)
+                bool state = true;
+                while (state)
+                {
+                    ConsoleKeyInfo infom = Console.ReadKey();
+                    switch (info.Key)
+                    {
+                        case ConsoleKey.UpArrow:
+                            Console.WriteLine("위로 이동");
+                            break;
+                        case ConsoleKey.RightArrow:
+                            Console.WriteLine("오른쪽으로 이동");
+                            break;
+                        case ConsoleKey.DownArrow:
+                            Console.WriteLine("아래로 이동");
+                            break;
+                        case ConsoleKey.LeftArrow:
+                            Console.WriteLine("왼쪽으로 이동");
+                            break;
+                        case ConsoleKey.X:
+                            state = false;
+                            break;
+                    }
+                }
+            }
+        }
     }
 }
